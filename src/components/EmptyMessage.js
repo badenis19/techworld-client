@@ -8,7 +8,7 @@ const EmptyMessage = ({ message, entity }) => {
   if (entity) {
     return (
       <div className="empty-message">
-        <p>{message}<Link to={`/`}> Go to Products</Link></p>
+        <p>{message} <Link to={`/`}>Go to Products</Link></p>
       </div>
     )
   } else {
