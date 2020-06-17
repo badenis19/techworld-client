@@ -1,0 +1,399 @@
+// variables
+:root{
+  --blue: RGB(8, 34, 67);
+  --sub: rgba(151, 108, 65, 1)
+}
+
+html, body, .App, header {
+  height:100%;
+}
+
+// reset - Removes default behavior
+body,p,a,ul,li{
+  margin: 0;
+  padding: 0;
+  text-decoration: none;
+}
+
+.App {
+  width: 100%;
+  min-height: 100vh;
+  position: relative;
+}
+
+body {
+  font-family: 'Roboto', sans-serif;
+  overflow-y:scroll;
+  background-color: rgba(234, 235, 239, 1);
+
+    .title {
+      text-align: center;
+      padding: 12px 12px;
+      margin-bottom: none !important;
+      margin-block-start: 0;
+      margin-block-end: 0;
+    }
+
+  }
+
+// NAV //
+nav {
+  z-index: 999;
+  position: sticky;
+  top: 0;
+  box-shadow: 0 2px 4px -1px rgba(0,0,0,0.25);
+  background: var(--blue);
+  display: flex;
+  justify-content: space-between;
+  min-height: 51px;
+  align-items:center;
+
+  #logo-link {
+    text-decoration: none;
+  }
+
+  .circleborder {
+    color: #fff;
+    opacity: 0.7;
+    position: relative;
+    height: 45px;
+    width: 45px;
+    border: 2px solid white;
+    border-radius: 50%;
+    margin-left:15px;
+
+    &:hover {
+      color: #fff;
+      opacity: 1;
+    }
+
+    div {
+      font-size: 1.4em;
+      height: 100%;
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      color: white;
+    }
+  }
+
+  h4 {
+    color: #fff;
+    padding-left: 10px;
+  }
+
+  ul {
+    display: flex;
+    list-style: none;
+  }
+
+  li {
+    align-items: center;
+    height: 50px;
+    display: flex;
+    padding: 10px 10px;
+    color: #fff;
+    opacity: 0.7;
+
+    &:hover {
+      color: #fff;
+      opacity: 1;
+    }
+  }
+}
+
+
+// PRODUCT LIST //
+.product-container {
+  padding-bottom: 50px;
+
+  .intro {
+    padding-right: 0;
+    padding-left: 0;
+  }
+
+  .tw-intro{
+    background: white;
+    padding: 9px;
+    margin-left: -6px;
+    margin-right: -6px;
+    margin-top: 19px;
+    border-radius: 5px;
+  }
+}
+
+.row {
+  justify-content: center;
+
+  .product {
+    max-height: 303px;
+    max-width: 285px ;
+    padding: 0;
+    margin: 10px 0;
+  }
+
+  .product-card {
+    background: white;
+    box-sizing: border-box;
+    border: 1px solid transparent;
+    border-radius: 5px;
+    padding: 9px;
+    margin: 9px;
+    overflow: hidden;
+    align-items: center;
+
+    &:hover {
+      border: 1px solid rgba(0, 0, 0, 0.3);
+    }
+  }
+
+  .product-name {
+  text-align: center;
+
+    p {
+      min-height: 32px;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      display: -webkit-box;
+      line-height: 16px;
+      max-height: 32px;
+      -webkit-line-clamp: 2; /* Write the number of lines you want to be displayed */
+      -webkit-box-orient: vertical;
+    }
+  }
+
+  .product-image {
+    padding: 10px 0;
+  }
+
+  .wrapper {
+    position: relative;
+    padding-top: 80%;
+
+    img {
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: auto;
+    }
+  }
+
+  .price-and-add-button {
+    min-height: 32px;
+    display: flex;
+    justify-content: space-between;
+
+    p {
+      font-size: 1.2em;
+      color: rgba(151, 108, 65, 1);
+      font-weight: bold;
+    }
+
+    button {
+      font-size: 0.8em;
+    }
+  }
+}
+
+.disable-button {
+  // pointer-events:none;
+  background: grey !important;
+  pointer-events: none;
+}
+
+// BANNER //
+.banner {
+  box-shadow: 0 2px 4px -1px rgba(0,0,0,0.25);
+  position: relative;
+  height: 40vh;
+  background-image: url('./images/nasa.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  justify-content: center;
+
+  h1 {
+    position: absolute;
+    top: 6vh;
+    justify-content: center;
+    font-size: 5em;
+    color: rgba(229, 189, 130, 1);
+  }
+
+}
+
+// FOOTER //
+footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  background-color: var(--blue);
+  display: flex;
+  justify-content: space-between;
+  color: #fff;
+
+  .container {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  h4 {
+    padding-top: 6px;
+  }
+
+  ul li {
+    list-style: none;
+    display: inline;
+    margin-left: 10px;
+    font-size: 30px;
+  }
+
+  a {
+    color: #fff;
+  }
+}
+
+// BASKET //
+.basket-container {
+  padding-bottom: 50px;
+}
+
+.basket {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px 0;
+
+  .product-img, .name {
+    padding-left: 9px;
+  }
+
+  .price {
+    padding-right: 9px;
+    font-weight: bold;
+  }
+
+  .remove-link {
+    text-decoration: underline;
+    text-align: center;
+    padding-left: 9px;
+  }
+
+  .remove-link:hover {
+    color: red;
+    cursor: pointer;
+  }
+}
+
+.container {
+  .checkout {
+    display: flex;
+    padding: 15px 0;
+    justify-content: flex-end;
+  }
+  .checkout-btn {
+    text-align: center;
+  }
+}
+
+.clear-basket-and-total-price {
+  padding: 15px 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  p {
+    font-weight: bold;
+  }
+}
+
+// EMPTY MESSAGE //
+.empty-message {
+  display: flex;
+  justify-content: center;
+
+  p {
+    padding-top: 10px;
+  }
+}
+
+// MEDIA QUERIES
+@media (max-width: 576px) {
+  body {
+    font-size: 12px;
+  }
+
+  .product-img {
+    max-width: 70px;
+  }
+
+  .product-container{
+    .intro {
+      padding: 0 17px;
+    }
+  }
+}
+
+@media (min-width: 577px) {
+  body {
+    font-size: 14px;
+  }
+
+  .product-img {
+    max-width: 190px;
+  }
+}
+
+@media (min-width: 768px) {
+  body{font-size: 14px;}
+  .product-img {
+    max-width: 300px;
+  }
+}
+
+@media (min-width: 992px) {
+  body{font-size: 16px;}
+}
+
+@media (min-width: 1200px) {
+  body{font-size: 16px;}
+}
+
+// CONTACT //
+.contact-container {
+  padding-bottom: 50px;
+}
+form{
+  .container {
+    padding-top: 10px;
+    margin-top: 30px;
+    margin-bottom: 10px;
+
+    margin: 13px auto;
+    border: 1px solid var(--sub);
+    border-radius: 5px;
+
+    h1 {
+      background: var(--blue);
+      padding: 10px;
+      border-radius: 5px 5px 0 0;
+    }
+
+    .btn {
+      margin-bottom: 18px;
+    }
+  }
+}
+
+@media (max-width: 576px) {
+  form {
+    margin: 0 15px;
+  }
+}
+
+.disable-button {
+  background: grey !important;
+  pointer-events: none;
+}
