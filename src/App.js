@@ -14,7 +14,7 @@ import Footer from './components/Footer';
 // Apollo Client Setup
 const client = new ApolloClient({
   // uri: "http://localhost:3001/graphql" //apollo knows we will be making requests to this end-point from our application
-  uri: "https://techworld-api.herokuapp.com/" 
+  uri: "https://techworld-api.herokuapp.com/graphql" 
 })
 
 const App = () => {
