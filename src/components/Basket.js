@@ -2,8 +2,14 @@ import React from 'react';
 import EmptyMessage from './EmptyMessage'
 import '../App.scss';
 import PropTypes from 'prop-types';
+import swal from 'sweetalert';
+// import { Redirect } from 'react-router-dom';
+// import { withRouter } from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
 
 const Basket = (props) => {
+
+  let history = useHistory();
 
   // if basket exists + is not empty + has a length
   const hasProducts = (props.basket && props.basket !== null) && props.basket.length;
@@ -51,6 +57,21 @@ const Basket = (props) => {
     return <p>£{total.toFixed(2)}</p>;
   }
 
+  const handleCheckout = () => {
+    // clear basket and redirect to home
+    swal({
+      title: "Checkout confirmed",
+      text: "Thank you for using TechWorld!",
+      icon: "success",
+      button: "Back to Products",
+    })
+      .then(() => {
+        history.push('/')
+      });
+      
+      clearBasket()
+  }
+
   if (hasProducts) {
     return (
       <div>
@@ -68,7 +89,7 @@ const Basket = (props) => {
             </div>
           </div>
           <div className="checkout">
-            <div className="btn btn-success checkout-btn">Checkout</div>
+            <div onClick={() => handleCheckout()} className="btn btn-success checkout-btn">Checkout</div>
           </div>
         </div>
       </div>
