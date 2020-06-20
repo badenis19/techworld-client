@@ -191,6 +191,10 @@ nav {
       font-weight: bold;
     }
 
+    .cross {
+      color: red;
+    }
+
     button {
       font-size: 0.8em;
     }
@@ -198,7 +202,6 @@ nav {
 }
 
 .disable-button {
-  // pointer-events:none;
   background: grey !important;
   pointer-events: none;
 }
