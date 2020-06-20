@@ -8,11 +8,19 @@ import '../App.scss';
 
 /* Component */
 import EmptyMessage from './EmptyMessage';
+
 class ProductList extends Component {
+
   addProducts(product) {
     product.isInBasket = true;
     this.props.addProduct(product);
   }
+
+  handleRemoveClick(product) {
+    this.props.removeProduct(product.id);
+    product.isInBasket = false;
+  }
+
   displayProducts() {
     let data = this.props.data;
     if (data.loading) {
@@ -32,6 +40,7 @@ class ProductList extends Component {
               </div>
               <div className="price-and-add-button">
                 <p key={product.id}>£{product.price.toFixed(2)}</p>
+                <p className={product.isInBasket ? "visible cross" : "invisible"} onClick={() => this.handleRemoveClick(product)}>X</p>
                 <button className={product.isInBasket ? "btn disable-button" : "btn btn-success"} onClick={() => this.addProducts(product)}>{product.isInBasket ? "ADDED" : "ADD TO BASKET"}</button>
               </div>
             </div>
@@ -42,24 +51,23 @@ class ProductList extends Component {
   }
 
   render() {
-      if (this.props.data.products) {
-        return (
-          <div className="product-container container">
-            <div className="intro col-xs-12 col-sm-12 col-md-12 ">
-              <p className="tw-intro">Here at <strong>TechWorld</strong> we sell only the very finest gaming mice on the market today with just one aim: to make it as easy as possible for a gamer to find the right rodent for their intended usage and budget..</p>
-            </div>
-            <div className="row">
-              {this.displayProducts()}
-            </div>
-          </div>
-        )
-      }
+    if (this.props.data.products) {
       return (
-        <EmptyMessage message="Product are loading... Please wait" />
+        <div className="product-container container">
+          <div className="intro col-xs-12 col-sm-12 col-md-12 ">
+            <p className="tw-intro">Here at <strong>TechWorld</strong> we sell only the very finest gaming mice on the market today with just one aim: to make it as easy as possible for a gamer to find the right rodent for their intended usage and budget..</p>
+          </div>
+          <div className="row">
+            {this.displayProducts()}
+          </div>
+        </div>
       )
+    }
+    return (
+      <EmptyMessage message="Product are loading... Please wait" />
+    )
   }
 }
-
 
 ProductList.propTypes = {
   addProduct: PropTypes.func.isRequired,

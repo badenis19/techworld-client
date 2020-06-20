@@ -3,8 +3,6 @@ import EmptyMessage from './EmptyMessage'
 import '../App.scss';
 import PropTypes from 'prop-types';
 import swal from 'sweetalert';
-// import { Redirect } from 'react-router-dom';
-// import { withRouter } from 'react-router-dom';
 import { useHistory } from 'react-router-dom';
 
 const Basket = (props) => {
@@ -15,7 +13,7 @@ const Basket = (props) => {
   const hasProducts = (props.basket && props.basket !== null) && props.basket.length;
 
   const handleRemoveClick = (product) => {
-    props.removeProduct(product.id)
+    props.removeProduct(product.id);
     product.isInBasket = false;
   }
 
@@ -66,10 +64,10 @@ const Basket = (props) => {
       button: "Back to Products",
     })
       .then(() => {
-        history.push('/')
+        history.push('/');
       });
-      
-      clearBasket()
+
+    clearBasket();
   }
 
   if (hasProducts) {
