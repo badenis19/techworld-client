@@ -64,7 +64,7 @@ const Basket = (props) => {
       button: "Back to Products",
     })
       .then(() => {
-        history.push('/');
+        history.push('/'); // to redirect to the home page
       });
 
     clearBasket();

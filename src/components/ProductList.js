@@ -55,7 +55,7 @@ class ProductList extends Component {
       return (
         <div className="product-container container">
           <div className="intro col-xs-12 col-sm-12 col-md-12 ">
-            <p className="tw-intro">Here at <strong>TechWorld</strong> we sell only the very finest gaming mice on the market today with just one aim: to make it as easy as possible for a gamer to find the right rodent for their intended usage and budget..</p>
+            <p className="tw-intro">Here at <strong>TechWorld</strong> we sell only the very finest gaming mice on the market today with just one aim; to make it as easy as possible for a gamer to find the right rodent for their intended usage and budget..</p>
           </div>
           <div className="row">
             {this.displayProducts()}
@@ -64,14 +64,15 @@ class ProductList extends Component {
       )
     }
     return (
-      <EmptyMessage message="Product are loading... Please wait" />
+      <EmptyMessage message="Products are loading... Please refresh the page" />
     )
   }
 }
 
 ProductList.propTypes = {
   addProduct: PropTypes.func.isRequired,
-  data: PropTypes.object.isRequired
+  data: PropTypes.object.isRequired,
+  removeProduct: PropTypes.object
 }
 
 export default graphql(getProductsQuery)(ProductList); // query result accessible via props
