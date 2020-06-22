@@ -40,7 +40,7 @@ class ProductList extends Component {
               </div>
               <div className="price-and-add-button">
                 <p key={product.id}>£{product.price.toFixed(2)}</p>
-                <p className={product.isInBasket ? "visible cross" : "invisible"} onClick={() => this.handleRemoveClick(product)}>X</p>
+                <p className={product.isInBasket ? "visible cross" : "invisible"} onClick={() => this.handleRemoveClick(product)}><i class="fas fa-times-circle"></i></p>
                 <button className={product.isInBasket ? "btn disable-button" : "btn btn-success"} onClick={() => this.addProducts(product)}>{product.isInBasket ? "ADDED" : "ADD TO BASKET"}</button>
               </div>
             </div>
