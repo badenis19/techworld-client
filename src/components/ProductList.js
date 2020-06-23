@@ -1,10 +1,14 @@
 import React, { Component } from 'react';
 import { graphql } from 'react-apollo'; // To bind Apollo with React Component
 import PropTypes from 'prop-types';
+import Loader from 'react-loader-spinner';
+
+/* Styles */
+import '../App.scss';
+import "react-loader-spinner/dist/loader/css/react-spinner-loader.css";
 
 /* Queries */
 import { getProductsQuery } from '../queries/queries'
-import '../App.scss';
 
 /* Component */
 import EmptyMessage from './EmptyMessage';
@@ -64,7 +68,13 @@ class ProductList extends Component {
       )
     }
     return (
-      <EmptyMessage message="Products are loading... Please refresh the page" />
+      <div>
+        <EmptyMessage message="The products are loading... Please wait or refresh the page. Thank you." />
+        <div className="d-flex justify-content-center">
+          <Loader type="ThreeDots" color="black" height={80} width={80} />
+        </div>
+      </div>
+
     )
   }
 }
@@ -72,7 +82,7 @@ class ProductList extends Component {
 ProductList.propTypes = {
   addProduct: PropTypes.func.isRequired,
   data: PropTypes.object.isRequired,
-  removeProduct: PropTypes.object
+  removeProduct: PropTypes.func
 }
 
 export default graphql(getProductsQuery)(ProductList); // query result accessible via props
