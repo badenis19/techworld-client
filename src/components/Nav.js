@@ -14,15 +14,15 @@ const Nav = (props) => {
 
       <div>
         <ul>
-          <Link to="/">
+          <Link className="nav-menu-link" to="/">
             <li>Home</li>
           </Link>
 
-          <Link to="/basket">
+          <Link className="nav-menu-link" to="/basket">
             <li><i className="fas fa-shopping-basket"></i> {props.basketSize}</li>
           </Link>
 
-          <Link to="/contact">
+          <Link className="nav-menu-link"to="/contact">
             <li>Contact</li>
           </Link>
         </ul>

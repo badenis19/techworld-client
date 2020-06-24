@@ -44,7 +44,7 @@ class ProductList extends Component {
               </div>
               <div className="price-and-add-button">
                 <p key={product.id}>£{product.price.toFixed(2)}</p>
-                <p className={product.isInBasket ? "visible cross" : "invisible"} onClick={() => this.handleRemoveClick(product)}>X</p>
+                <p className={product.isInBasket ? "visible cross" : "invisible"} onClick={() => this.handleRemoveClick(product)}><i class="fas fa-times-circle"></i></p>
                 <button className={product.isInBasket ? "btn disable-button" : "btn btn-success"} onClick={() => this.addProducts(product)}>{product.isInBasket ? "ADDED" : "ADD TO BASKET"}</button>
               </div>
             </div>
@@ -69,9 +69,14 @@ class ProductList extends Component {
     }
     return (
       <div>
-        <EmptyMessage message="The products are loading... Please wait or refresh the page. Thank you." />
+        <EmptyMessage message="Products loading... Please wait or refresh the page." />
         <div className="d-flex justify-content-center">
-          <Loader type="ThreeDots" color="black" height={80} width={80} />
+          <Loader 
+            type="ThreeDots" 
+            color="black" 
+            height={80} 
+            width={80} 
+          />
         </div>
       </div>
 

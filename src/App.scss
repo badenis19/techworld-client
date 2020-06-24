@@ -52,6 +52,10 @@ nav {
     text-decoration: none;
   }
 
+  .nav-menu-link {
+    text-decoration: none;
+  }
+
   .circleborder {
     color: #fff;
     opacity: 0.7;
@@ -193,6 +197,13 @@ nav {
 
     .cross {
       color: red;
+      opacity: 0.7;
+
+      &:hover {
+        color: red;
+        opacity: 1;
+        cursor: pointer;
+      }
     }
 
     button {
