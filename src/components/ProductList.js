@@ -69,9 +69,14 @@ class ProductList extends Component {
     }
     return (
       <div>
-        <EmptyMessage message="The products are loading... Please wait or refresh the page. Thank you." />
+        <EmptyMessage message="Products loading... Please wait or refresh the page." />
         <div className="d-flex justify-content-center">
-          <Loader type="ThreeDots" color="black" height={80} width={80} />
+          <Loader 
+            type="ThreeDots" 
+            color="black" 
+            height={80} 
+            width={80} 
+          />
         </div>
       </div>
 
