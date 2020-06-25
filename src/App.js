@@ -25,7 +25,6 @@ const App = () => {
   // state = { show: false };
 
   const showModal = () => {
-    console.log(">>>>>");
     setShow(true);
   };
 
@@ -69,8 +68,7 @@ const App = () => {
 
         <div className="App">
 
-          
-          <Modal show={show} handleClose={hideModal} />
+        
 
           <Nav basketSize={productsInBasket.length} />
 
@@ -99,6 +97,7 @@ const App = () => {
           </Switch>
 
           <Footer />
+          <Modal show={show} handleClose={hideModal} />
 
         </div>
 

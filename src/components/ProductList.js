@@ -25,7 +25,7 @@ class ProductList extends Component {
     product.isInBasket = false;
   }
 
-  dsplayProducits() {
+  displayProducts() {
     let data = this.props.data;
     if (data.loading) {
       return (<p>Loading Products...</p>)
@@ -35,7 +35,8 @@ class ProductList extends Component {
           <div key={product.id} className="product col-xs-12 col-sm-6 col-md-6 col-lg-4 col-xl-3">
             <div className="product-card">
             
-              <div className="product-modal" onClick={() => this.props.showModal()}>
+              <button className="product-modal" onClick={() => this.props.showModal()}>modal
+              </button >
                 <div className="product-name">
                   <p key={product.id}>{product.name}</p>
                 </div>
@@ -43,8 +44,9 @@ class ProductList extends Component {
                   <div className="wrapper">
                     <img key={product.id} src={product.img_url} alt="product" />
                   </div>
+                  
                 </div>
-                </div>
+                
               <div className="price-and-add-button">
                 <p key={product.id}>£{product.price.toFixed(2)}</p>
                 <p className={product.isInBasket ? "visible cross" : "invisible"} onClick={() => this.handleRemoveClick(product)}><i className="fas fa-times-circle"></i></p>
