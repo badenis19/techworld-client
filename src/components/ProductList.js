@@ -12,8 +12,21 @@ import { getProductsQuery } from '../queries/queries'
 
 /* Component */
 import EmptyMessage from './EmptyMessage';
+import Modal from './Modal';
 
 class ProductList extends Component {
+
+  state = { show: false, id: null };
+
+  showModal = (product) => {
+    this.setState({ show: true });
+    console.log(".....", product.id);
+    this.setState({id: product.id});
+  };
+
+  hideModal = () => {
+    this.setState({ show: false });
+  };
 
   addProducts(product) {
     product.isInBasket = true;
@@ -25,8 +38,38 @@ class ProductList extends Component {
     product.isInBasket = false;
   }
 
-  displayProducts() {
+  displayProduct() {
     let data = this.props.data;
+     return data.products.map(product => {
+       if (product.id === this.state.id)
+       return(
+        <div key={product.id} className="product col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
+        <div className="product-card">
+         <div className="product-name">
+           <p key={product.id}>{product.name}</p>
+         </div>
+         <div className="product-image">
+           <div className="wrapper">
+             <img key={product.id} src={product.img_url} alt="product" />
+           </div>
+
+         </div>
+          <div className="price-and-add-button">
+          <p key={product.id}>£{product.price.toFixed(2)}</p>
+          <p className={product.isInBasket ? "visible cross" : "invisible"} onClick={() => this.handleRemoveClick(product)}><i className="fas fa-times-circle"></i></p>
+          <button className={product.isInBasket ? "btn disable-button" : "btn btn-success"} onClick={() => this.addProducts(product)}>{product.isInBasket ? "ADDED" : "ADD TO BASKET"}</button>
+        </div>
+      </div>
+      </div>
+       )
+     })
+    
+  }
+
+  displayProducts() {
+  
+    let data = this.props.data;
+    // console.log("data",data.products);
     if (data.loading) {
       return (<p>Loading Products...</p>)
     } else {
@@ -34,9 +77,9 @@ class ProductList extends Component {
         return (
           <div key={product.id} className="product col-xs-12 col-sm-6 col-md-6 col-lg-4 col-xl-3">
             <div className="product-card">
-            
-              <button className="product-modal" onClick={() => this.props.showModal()}>modal
-              </button >
+
+              <div className="product-modal" onClick={() => this.showModal(product)}>
+              
                 <div className="product-name">
                   <p key={product.id}>{product.name}</p>
                 </div>
@@ -45,6 +88,7 @@ class ProductList extends Component {
                     <img key={product.id} src={product.img_url} alt="product" />
                   </div>
                   
+                </div>
                 </div>
                 
               <div className="price-and-add-button">
@@ -60,6 +104,8 @@ class ProductList extends Component {
   }
 
  render() {
+
+  
     
     if (this.props.data.products) {
       return (
@@ -70,6 +116,8 @@ class ProductList extends Component {
           <div className="row">
             {this.displayProducts()}
           </div>
+          <Modal id={this.state.id} show={this.state.show} handleClose={this.hideModal} children={this.displayProduct()}>
+          </Modal>
         </div>
       )
     }

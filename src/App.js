@@ -10,7 +10,6 @@ import Basket from './components/Basket';
 import Contact from './components/Contact';
 import Banner from './components/Banner';
 import Footer from './components/Footer';
-import Modal from './components/Modal';
 
 // Apollo Client Setup
 const client = new ApolloClient({
@@ -20,17 +19,15 @@ const client = new ApolloClient({
 
 const App = () => {
 
-  const [show, setShow] = useState(false)
+  // const [show, setShow] = useState(false)
 
-  // state = { show: false };
+  // const showModal = () => {
+  //   setShow(true);
+  // };
 
-  const showModal = () => {
-    setShow(true);
-  };
-
-  const hideModal = () => {
-    setShow(false);
-  };
+  // const hideModal = () => {
+  //   setShow(false);
+  // };
 
   // Storing the basket with local Storage
   const [productsInBasket, setProductsInBasket] = useState(() => {
@@ -78,7 +75,7 @@ const App = () => {
 
             <Route
               path="/"
-              render={() => <ProductList addProduct={addProduct} removeProduct={removeProduct} showModal={showModal} />}
+              render={() => <ProductList addProduct={addProduct} removeProduct={removeProduct} />}
               exact
             />
 
@@ -97,7 +94,7 @@ const App = () => {
           </Switch>
 
           <Footer />
-          <Modal show={show} handleClose={hideModal} />
+          
 
         </div>
 
