@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, {Component} from 'react';
 import { graphql } from 'react-apollo'; // To bind Apollo with React Component
 import PropTypes from 'prop-types';
 import Loader from 'react-loader-spinner';
@@ -25,7 +25,7 @@ class ProductList extends Component {
     product.isInBasket = false;
   }
 
-  displayProducts() {
+  dsplayProducits() {
     let data = this.props.data;
     if (data.loading) {
       return (<p>Loading Products...</p>)
@@ -34,17 +34,20 @@ class ProductList extends Component {
         return (
           <div key={product.id} className="product col-xs-12 col-sm-6 col-md-6 col-lg-4 col-xl-3">
             <div className="product-card">
-              <div className="product-name">
-                <p key={product.id}>{product.name}</p>
-              </div>
-              <div className="product-image">
-                <div className="wrapper">
-                  <img key={product.id} src={product.img_url} alt="product" />
+            
+              <div className="product-modal" onClick={() => this.props.showModal()}>
+                <div className="product-name">
+                  <p key={product.id}>{product.name}</p>
                 </div>
-              </div>
+                <div className="product-image">
+                  <div className="wrapper">
+                    <img key={product.id} src={product.img_url} alt="product" />
+                  </div>
+                </div>
+                </div>
               <div className="price-and-add-button">
                 <p key={product.id}>£{product.price.toFixed(2)}</p>
-                <p className={product.isInBasket ? "visible cross" : "invisible"} onClick={() => this.handleRemoveClick(product)}><i class="fas fa-times-circle"></i></p>
+                <p className={product.isInBasket ? "visible cross" : "invisible"} onClick={() => this.handleRemoveClick(product)}><i className="fas fa-times-circle"></i></p>
                 <button className={product.isInBasket ? "btn disable-button" : "btn btn-success"} onClick={() => this.addProducts(product)}>{product.isInBasket ? "ADDED" : "ADD TO BASKET"}</button>
               </div>
             </div>
@@ -54,7 +57,8 @@ class ProductList extends Component {
     }
   }
 
-  render() {
+ render() {
+    
     if (this.props.data.products) {
       return (
         <div className="product-container container">

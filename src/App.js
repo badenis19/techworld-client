@@ -10,14 +10,28 @@ import Basket from './components/Basket';
 import Contact from './components/Contact';
 import Banner from './components/Banner';
 import Footer from './components/Footer';
+import Modal from './components/Modal';
 
 // Apollo Client Setup
 const client = new ApolloClient({
-  // uri: "http://localhost:3001/graphql" //apollo knows we will be making requests to this end-point from our application
-  uri: "https://techworld-api.herokuapp.com/graphql" 
+  uri: "http://localhost:3001/graphql" //apollo knows we will be making requests to this end-point from our application
+  // uri: "https://techworld-api.herokuapp.com/graphql" 
 })
 
 const App = () => {
+
+  const [show, setShow] = useState(false)
+
+  // state = { show: false };
+
+  const showModal = () => {
+    console.log(">>>>>");
+    setShow(true);
+  };
+
+  const hideModal = () => {
+    setShow(false);
+  };
 
   // Storing the basket with local Storage
   const [productsInBasket, setProductsInBasket] = useState(() => {
@@ -51,7 +65,12 @@ const App = () => {
     <Router>
       <ApolloProvider client={client}>
 
+
+
         <div className="App">
+
+          
+          <Modal show={show} handleClose={hideModal} />
 
           <Nav basketSize={productsInBasket.length} />
 
@@ -61,7 +80,7 @@ const App = () => {
 
             <Route
               path="/"
-              render={() => <ProductList addProduct={addProduct} removeProduct={removeProduct} />}
+              render={() => <ProductList addProduct={addProduct} removeProduct={removeProduct} showModal={showModal} />}
               exact
             />
 
