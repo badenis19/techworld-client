@@ -20,7 +20,6 @@ class ProductList extends Component {
 
   showModal = (product) => {
     this.setState({ show: true });
-    console.log(".....", product.id);
     this.setState({id: product.id});
   };
 
@@ -43,23 +42,38 @@ class ProductList extends Component {
      return data.products.map(product => {
        if (product.id === this.state.id)
        return(
-        <div key={product.id} className="product col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
-        <div className="product-card">
-         <div className="product-name">
-           <p key={product.id}>{product.name}</p>
-         </div>
-         <div className="product-image">
-           <div className="wrapper">
-             <img key={product.id} src={product.img_url} alt="product" />
-           </div>
+        <div key={product.id} className="modal-product col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
+        <div className="modal-product-card">
+          <div className="modal-product-name">
+            <p key={product.id}>{product.name}</p>
+          </div>
+          <div className="top-product-card">
+          <div className="left-side-product-card">
+          <div className="modal-product-image">
+            <div className="wrapper">
+              <img key={product.id} src={product.img_url} alt="product" />
+            </div>
+          </div>
+          </div>
 
-         </div>
-          <div className="price-and-add-button">
-          <p key={product.id}>£{product.price.toFixed(2)}</p>
-          <p className={product.isInBasket ? "visible cross" : "invisible"} onClick={() => this.handleRemoveClick(product)}><i className="fas fa-times-circle"></i></p>
-          <button className={product.isInBasket ? "btn disable-button" : "btn btn-success"} onClick={() => this.addProducts(product)}>{product.isInBasket ? "ADDED" : "ADD TO BASKET"}</button>
+          <div className="right-side-product-card">
+            <div className="modal-price-and-add-button">
+              <p key={product.id}>£{product.price.toFixed(2)}</p>
+              <p className={product.isInBasket ? "visible cross" : "invisible"} onClick={() => this.handleRemoveClick(product)}><i className="fas fa-times-circle"></i></p>
+              <button className={product.isInBasket ? "btn disable-button" : "btn btn-success"} onClick={() => this.addProducts(product)}>{product.isInBasket ? "ADDED" : "ADD TO BASKET"}</button>
+            </div>
+          </div>
+          </div>
+
+          <div className="bottom-product-card">
+            <p className="product-desc">
+              <p className="desc-title">Product information</p>
+            Lorem ipsum dolor sit amet, nibh atqui apeirian eum ad, cu sed quem quodsi, dicant facilis sed id. Omnes mandamus concludaturque vel ad. Liber suscipiantur qui at, ne quo stet accusam commune. Altera invenire iracundia no mea.
+
+No sit accusam adipisci concludaturque, eu option inermis constituto duo. At alia perfecto.
+            </p>
+          </div>
         </div>
-      </div>
       </div>
        )
      })
@@ -116,7 +130,7 @@ class ProductList extends Component {
           <div className="row">
             {this.displayProducts()}
           </div>
-          <Modal id={this.state.id} show={this.state.show} handleClose={this.hideModal} children={this.displayProduct()}>
+          <Modal id={this.state.id} show={this.state.show} hideModal={this.hideModal} children={this.displayProduct()}>
           </Modal>
         </div>
       )

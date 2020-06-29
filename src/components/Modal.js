@@ -1,6 +1,6 @@
 import React from 'react';
 
-const Modal = ({ handleClose, show, id, children }) => {
+const Modal = ({ hideModal, show, id, children }) => {
 
     let clickedProductId = id
     let desc = children
@@ -10,11 +10,19 @@ const Modal = ({ handleClose, show, id, children }) => {
     return (
       <div className={showHideClassName}>
         <section className="modal-main">
-                <div>{desc}</div> 
-            <button onClick={handleClose}>close</button>
+          <div>
+          <div className="container">
+            <div className="row">
+              {desc}
+            </div>
+          </div>
+                
+            <p className="modal-back-link" onClick={hideModal}>back to products</p>
+            </div>
         </section>
+
       </div>
     );
   };
 
-  export default Modal;
+  export default Modal; 
