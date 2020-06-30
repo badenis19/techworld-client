@@ -1,4 +1,4 @@
-import React, {Component,useState } from 'react';
+import React, { Component, useState } from 'react';
 import { graphql } from 'react-apollo'; // To bind Apollo with React Component
 import PropTypes from 'prop-types';
 import Loader from 'react-loader-spinner';
@@ -15,19 +15,11 @@ import EmptyMessage from './EmptyMessage';
 import Modal from './Modal';
 
 class ProductList extends Component {
-
-  // const [modalOpen, setModalOpen] = useState(false);
-  // const [show, setShow] = useState(false);
-  // const [id, setId] = useState(null);
-  state = { show: false, id: null};
-
+  state = { show: false, id: null };
   showModal = (product) => {
-    // setShow(true);
-    const originalStyle = window.getComputedStyle(document.body).overflow;
     this.setState({ show: true });
     this.setState({ id: product.id });
-  
-      document.body.style.overflow = 'hidden';
+    document.body.style.overflow = 'hidden';
   }
 
   hideModal = () => {
@@ -47,50 +39,44 @@ class ProductList extends Component {
 
   displayProduct() {
     let data = this.props.data;
-     return data.products.map(product => {
-       if (product.id === this.state.id)
-       return(
-        <div key={product.id} className="modal-product col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
-        <div className="modal-product-card">
-          <div className="modal-product-name">
-            <p key={product.id}>{product.name}</p>
-          </div>
-          <div className="top-product-card">
-          <div className="left-side-product-card">
-          <div className="modal-product-image">
-            <div className="wrapper">
-              <img key={product.id} src={product.img_url} alt="product" />
-            </div>
-          </div>
-          </div>
-
-          <div className="right-side-product-card">
-            <div className="modal-price-and-add-button">
-              <p key={product.id}>£{product.price.toFixed(2)}</p>
-              <p className={product.isInBasket ? "visible cross" : "invisible"} onClick={() => this.handleRemoveClick(product)}><i className="fas fa-times-circle"></i></p>
-              <button className={product.isInBasket ? "btn disable-button" : "btn btn-success"} onClick={() => this.addProducts(product)}>{product.isInBasket ? "ADDED" : "ADD TO BASKET"}</button>
-            </div>
-          </div>
-          </div>
-
-          <div className="bottom-product-card">
-            <p className="product-desc">
-              <p className="desc-title">Product information</p>
+    return data.products.map(product => {
+      if (product.id === this.state.id)
+        return (
+          <div key={product.id} className="modal-product col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
+            <div className="modal-product-card">
+              <div className="modal-product-name">
+                <p key={product.id}>{product.name}</p>
+              </div>
+              <div className="top-product-card">
+                <div className="left-side-product-card">
+                  <div className="modal-product-image">
+                    <div className="wrapper">
+                      <img key={product.id} src={product.img_url} alt="product" />
+                    </div>
+                  </div>
+                </div>
+                <div className="right-side-product-card">
+                  <div className="modal-price-and-add-button">
+                    <p key={product.id}>£{product.price.toFixed(2)}</p>
+                    <p className={product.isInBasket ? "visible cross" : "invisible"} onClick={() => this.handleRemoveClick(product)}><i className="fas fa-times-circle"></i></p>
+                    <button className={product.isInBasket ? "btn disable-button" : "btn btn-success"} onClick={() => this.addProducts(product)}>{product.isInBasket ? "ADDED" : "ADD TO BASKET"}</button>
+                  </div>
+                </div>
+              </div>
+              <div className="bottom-product-card">
+                <p className="product-desc">
+                  <p className="desc-title">Product information</p>
             Lorem ipsum dolor sit amet, nibh atqui apeirian eum ad, cu sed quem quodsi, dicant facilis sed id. Omnes mandamus concludaturque vel ad.
-
             </p>
+              </div>
+            </div>
           </div>
-        </div>
-      </div>
-       )
-     })
-    
+        )
+    })
   }
 
   displayProducts() {
-  
     let data = this.props.data;
-    // console.log("data",data.products);
     if (data.loading) {
       return (<p>Loading Products...</p>)
     } else {
@@ -98,9 +84,7 @@ class ProductList extends Component {
         return (
           <div key={product.id} className="product col-xs-12 col-sm-6 col-md-6 col-lg-4 col-xl-3">
             <div className="product-card">
-
               <div className="product-modal" onClick={() => this.showModal(product)}>
-              
                 <div className="product-name">
                   <p key={product.id}>{product.name}</p>
                 </div>
@@ -108,10 +92,8 @@ class ProductList extends Component {
                   <div className="wrapper">
                     <img key={product.id} src={product.img_url} alt="product" />
                   </div>
-                  
                 </div>
-                </div>
-                
+              </div>
               <div className="price-and-add-button">
                 <p key={product.id}>£{product.price.toFixed(2)}</p>
                 <p className={product.isInBasket ? "visible cross" : "invisible"} onClick={() => this.handleRemoveClick(product)}><i className="fas fa-times-circle"></i></p>
@@ -124,10 +106,7 @@ class ProductList extends Component {
     }
   }
 
- render() {
-
-  
-    
+  render() {
     if (this.props.data.products) {
       return (
         <div className="product-container container">
@@ -146,15 +125,14 @@ class ProductList extends Component {
       <div>
         <EmptyMessage message="Products loading... Please wait or refresh the page." />
         <div className="d-flex justify-content-center">
-          <Loader 
-            type="ThreeDots" 
-            color="black" 
-            height={80} 
-            width={80} 
+          <Loader
+            type="ThreeDots"
+            color="black"
+            height={80}
+            width={80}
           />
         </div>
       </div>
-
     )
   }
 }

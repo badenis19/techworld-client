@@ -19,16 +19,6 @@ const client = new ApolloClient({
 
 const App = () => {
 
-  // const [show, setShow] = useState(false)
-
-  // const showModal = () => {
-  //   setShow(true);
-  // };
-
-  // const hideModal = () => {
-  //   setShow(false);
-  // };
-
   // Storing the basket with local Storage
   const [productsInBasket, setProductsInBasket] = useState(() => {
     let localData = localStorage.getItem("productsInBasket"); // String
