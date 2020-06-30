@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React, {Component,useState } from 'react';
 import { graphql } from 'react-apollo'; // To bind Apollo with React Component
 import PropTypes from 'prop-types';
 import Loader from 'react-loader-spinner';
@@ -16,15 +16,23 @@ import Modal from './Modal';
 
 class ProductList extends Component {
 
-  state = { show: false, id: null };
+  // const [modalOpen, setModalOpen] = useState(false);
+  // const [show, setShow] = useState(false);
+  // const [id, setId] = useState(null);
+  state = { show: false, id: null};
 
   showModal = (product) => {
+    // setShow(true);
+    const originalStyle = window.getComputedStyle(document.body).overflow;
     this.setState({ show: true });
-    this.setState({id: product.id});
-  };
+    this.setState({ id: product.id });
+  
+      document.body.style.overflow = 'hidden';
+  }
 
   hideModal = () => {
     this.setState({ show: false });
+    document.body.style.overflow = 'unset';
   };
 
   addProducts(product) {
@@ -68,9 +76,8 @@ class ProductList extends Component {
           <div className="bottom-product-card">
             <p className="product-desc">
               <p className="desc-title">Product information</p>
-            Lorem ipsum dolor sit amet, nibh atqui apeirian eum ad, cu sed quem quodsi, dicant facilis sed id. Omnes mandamus concludaturque vel ad. Liber suscipiantur qui at, ne quo stet accusam commune. Altera invenire iracundia no mea.
+            Lorem ipsum dolor sit amet, nibh atqui apeirian eum ad, cu sed quem quodsi, dicant facilis sed id. Omnes mandamus concludaturque vel ad.
 
-No sit accusam adipisci concludaturque, eu option inermis constituto duo. At alia perfecto.
             </p>
           </div>
         </div>

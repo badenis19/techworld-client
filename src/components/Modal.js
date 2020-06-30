@@ -1,6 +1,6 @@
 import React from 'react';
 
-const Modal = ({ hideModal, show, id, children }) => {
+const Modal = ({ hideModal, show, id, children}) => {
 
     let clickedProductId = id
     let desc = children
