@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, useEffect } from 'react';
 import { graphql } from 'react-apollo'; // To bind Apollo with React Component
 import PropTypes from 'prop-types';
 import Loader from 'react-loader-spinner';
@@ -14,6 +14,10 @@ import { getProductsQuery } from '../queries/queries'
 import EmptyMessage from './EmptyMessage';
 
 class ProductList extends Component {
+
+  componentDidMount(){
+    window.scrollTo(0, 0)
+  }
 
   addProducts(product) {
     product.isInBasket = true;
@@ -44,7 +48,7 @@ class ProductList extends Component {
               </div>
               <div className="price-and-add-button">
                 <p key={product.id}>£{product.price.toFixed(2)}</p>
-                <p className={product.isInBasket ? "visible cross" : "invisible"} onClick={() => this.handleRemoveClick(product)}><i class="fas fa-times-circle"></i></p>
+                <p className={product.isInBasket ? "visible cross" : "invisible"} onClick={() => this.handleRemoveClick(product)}><i className="fas fa-times-circle"></i></p>
                 <button className={product.isInBasket ? "btn disable-button" : "btn btn-success"} onClick={() => this.addProducts(product)}>{product.isInBasket ? "ADDED" : "ADD TO BASKET"}</button>
               </div>
             </div>
