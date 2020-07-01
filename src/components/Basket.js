@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import EmptyMessage from './EmptyMessage'
 import '../App.scss';
 import PropTypes from 'prop-types';
@@ -6,6 +6,10 @@ import swal from 'sweetalert';
 import { useHistory } from 'react-router-dom';
 
 const Basket = (props) => {
+  
+  useEffect(() => {
+    window.scrollTo(0, 0)
+  });
 
   let history = useHistory();
 
