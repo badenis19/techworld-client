@@ -573,3 +573,25 @@ form{
   font-size: 1em;
   text-decoration: underline;
 }
+
+.tooltips {
+  position: relative;
+}
+
+.tooltips .tooltiptexts {
+  visibility: hidden;
+  width: 120px;
+  background-color: lightgray;
+  color: #fff;
+  text-align: center;
+  border-radius: 6px;
+  // padding: 5px 0;
+  margin-top: 25px;
+  /* Position the tooltip */
+  position: absolute;
+  z-index: 1;
+}
+
+.tooltips:hover .tooltiptexts {
+  visibility: visible;
+}

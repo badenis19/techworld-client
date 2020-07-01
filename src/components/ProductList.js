@@ -117,9 +117,10 @@ class ProductList extends Component {
           >
             <div className="product-card">
               <div
-                className="product-modal"
+                className="product-modal tooltips"
                 onClick={() => this.showModal(product)}
               >
+                <span class="tooltiptexts">View Details</span>
                 <div className="product-name">
                   <p key={product.id}>{product.name}</p>
                 </div>
